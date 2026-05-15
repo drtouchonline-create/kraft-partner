@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kraft GmbH — Web-Modernisierung Vorschlag</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy2: #111e35;
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --gray: #6b7280;
+    --light: #f8f7f4;
+    --accent: #1e3a5f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a1628 0%, #111e35 50%, #0d1f3c 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 1200px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+    animation: fadeDown 0.8s ease 0.1s both;
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.6);
+    max-width: 580px;
+    margin: 24px auto 48px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+    animation: fadeDown 0.8s ease 0.2s both;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 16px 36px;
+    border-radius: 100px;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+    animation: fadeDown 0.8s ease 0.3s both;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.35);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 60px;
+    margin-top: 72px;
+    position: relative;
+    z-index: 1;
+    animation: fadeDown 0.8s ease 0.4s both;
+  }
+
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION ── */
+  section {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 60px;
+  }
+
+  /* ── PROBLEMS ── */
+  .problems-section {
+    background: var(--navy2);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 100px 20px;
+  }
+
+  .problems-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .problem-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .problem-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 20px 24px;
+    transition: all 0.3s ease;
+  }
+
+  .problem-card:hover {
+    border-color: rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.04);
+  }
+
+  .problem-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: rgba(239,68,68,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .problem-text h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .problem-text p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+  }
+
+  /* ── SITE PREVIEW MOCK ── */
+  .site-mock {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .mock-bar {
+    background: rgba(255,255,255,0.06);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mock-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .mock-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  .mock-url {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .mock-body {
+    padding: 24px;
+  }
+
+  .mock-hero-old {
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .mock-title-old {
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 12px;
+  }
+
+  .mock-text-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .mock-line {
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .mock-labels {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .mock-label {
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    border: 1px solid rgba(239,68,68,0.4);
+    color: rgba(239,68,68,0.7);
+  }
+
+  /* ── PROPOSALS GRID ── */
+  .proposals-section {
+    padding: 100px 20px;
+  }
+
+  .proposals-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .proposals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .proposal-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: default;
+  }
+
+  .proposal-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--gold2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .proposal-card:hover {
+    border-color: rgba(201,168,76,0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  }
+
+  .proposal-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .card-num {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.08);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .proposal-card:hover .card-num {
+    color: rgba(201,168,76,0.15);
+  }
+
+  .card-emoji {
+    font-size: 34px;
+    margin-bottom: 20px;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(201,168,76,0.2));
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .card-result {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 10px;
+    padding: 10px 14px;
+  }
+
+  .card-result-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .card-result-text {
+    font-size: 13px;
+    color: var(--gold2);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .card-priority {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+  }
+
+  .priority-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .priority-high {
+    background: rgba(239,68,68,0.15);
+    color: #f87171;
+    border: 1px solid rgba(239,68,68,0.25);
+  }
+
+  .priority-mid {
+    background: rgba(251,146,60,0.12);
+    color: #fb923c;
+    border: 1px solid rgba(251,146,60,0.2);
+  }
+
+  .priority-low {
+    background: rgba(74,222,128,0.1);
+    color: #4ade80;
+    border: 1px solid rgba(74,222,128,0.18);
+  }
+
+  /* ── BEFORE/AFTER ── */
+  .compare-section {
+    background: var(--navy2);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 100px 20px;
+  }
+
+  .compare-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 60px;
+  }
+
+  .compare-box {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .compare-header {
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .compare-header.before {
+    background: rgba(239,68,68,0.12);
+    color: #f87171;
+    border-bottom: 1px solid rgba(239,68,68,0.15);
+  }
+
+  .compare-header.after {
+    background: rgba(74,222,128,0.1);
+    color: #4ade80;
+    border-bottom: 1px solid rgba(74,222,128,0.15);
+  }
+
+  .compare-items {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .compare-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .ci-icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
+
+  /* ── PROCESS ── */
+  .process-section {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 60px;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: calc(12.5% + 20px);
+    right: calc(12.5% + 20px);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201,168,76,0.5), rgba(201,168,76,0.2));
+    z-index: 0;
+  }
+
+  .process-step {
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-circle {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 0 6px rgba(201,168,76,0.1), 0 8px 24px rgba(201,168,76,0.25);
+  }
+
+  .step-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 80px 20px 120px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .cta-box {
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 50px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .cta-box p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 16px 36px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(201,168,76,0.4);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 16px 36px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 20px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  footer span { color: var(--gold); }
+
+  /* ── DIVIDER ── */
+  .gold-divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold2));
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .problems-inner,
+    .compare-grid,
+    .process-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .process-steps::before { display: none; }
+
+    .hero-stats {
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .proposals-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── ADVANTAGE SECTION ── */
+  .advantage-section {
+    background: var(--navy2);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 100px 20px;
+  }
+
+  .advantage-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .unique-banner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.05));
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 20px;
+    padding: 28px 36px;
+    margin-bottom: 40px;
+  }
+
+  .unique-icon { font-size: 44px; flex-shrink: 0; }
+
+  .unique-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .unique-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--white);
+  }
+
+  .software-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 52px;
+    justify-content: center;
+  }
+
+  .sw-tag {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold2);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 18px;
+    border-radius: 100px;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+  }
+
+  .sw-tag:hover {
+    background: rgba(201,168,76,0.15);
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .comp-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .comp-col {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.3s ease;
+  }
+
+  .comp-col.comp-good {
+    border-color: rgba(201,168,76,0.35);
+    box-shadow: 0 0 40px rgba(201,168,76,0.08);
+  }
+
+  .comp-header {
+    padding: 18px 22px 4px;
+    font-size: 15px;
+    font-weight: 700;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .comp-col.comp-good .comp-header {
+    background: rgba(201,168,76,0.1);
+    color: var(--gold2);
+  }
+
+  .comp-subheader {
+    padding: 0 22px 14px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.4px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .comp-col.comp-good .comp-subheader {
+    background: rgba(201,168,76,0.1);
+    border-bottom-color: rgba(201,168,76,0.15);
+    color: rgba(201,168,76,0.6);
+  }
+
+  .comp-items {
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .comp-col.comp-good .comp-items { background: rgba(201,168,76,0.03); }
+
+  .comp-item { font-size: 13px; line-height: 1.4; }
+  .ci-bad { color: rgba(248,113,113,0.75); }
+  .ci-good { color: rgba(74,222,128,0.9); font-weight: 500; }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .diff-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: all 0.3s ease;
+  }
+
+  .diff-card:hover {
+    border-color: rgba(201,168,76,0.25);
+    background: rgba(201,168,76,0.04);
+    transform: translateY(-3px);
+  }
+
+  .diff-icon { font-size: 32px; display: block; margin-bottom: 16px; }
+
+  .diff-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .diff-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 768px) {
+    .comp-table, .diff-grid, .qs-grid { grid-template-columns: 1fr; }
+    .unique-banner { flex-direction: column; text-align: center; }
+  }
+
+  /* ── QUICK START ── */
+  .quickstart-section {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .quickstart-inner { max-width: 1200px; margin: 0 auto; }
+
+  .qs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .qs-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 32px 28px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .qs-card:hover {
+    border-color: rgba(201,168,76,0.2);
+    transform: translateY(-4px);
+  }
+
+  .qs-featured {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.04));
+    border-color: rgba(201,168,76,0.35);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  .qs-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--gold), var(--gold2));
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .qs-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 12px;
+  }
+
+  .qs-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  .qs-items {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 24px;
+  }
+
+  .qs-item {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+  }
+
+  .qs-featured .qs-item { color: rgba(255,255,255,0.8); }
+
+  .qs-result {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold2);
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 8px;
+    padding: 10px 14px;
+    line-height: 1.4;
+  }
+
+  /* scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-badge">🔍 Web-Analyse · Kraft GmbH</div>
+  <h1>
+    Ihre Website hat<br>
+    <span>ungenutztes Potenzial</span>
+  </h1>
+  <p class="hero-sub">
+    Wir haben kraft-partner.com analysiert und 14 konkrete Lösungen identifiziert, die Ihnen mehr Kunden, mehr Anfragen und einen entscheidenden Vorsprung gegenüber Ihren Mitbewerbern bringen.
+  </p>
+  <a href="#proposals" class="hero-cta">✦ Alle Vorschläge ansehen</a>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">14</span>
+      <span class="stat-label">Verbesserungen</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">3×</span>
+      <span class="stat-label">Mehr Sichtbarkeit</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">29J.</span>
+      <span class="stat-label">Erfahrung sichtbar machen</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROBLEMS ── -->
+<div class="problems-section">
+  <div class="problems-inner reveal">
+    <div>
+      <span class="section-tag">Was jetzt fehlt</span>
+      <div class="gold-divider"></div>
+      <h2 class="section-title">Was die aktuelle Website<br>Ihnen kostet</h2>
+      <p class="section-desc">Jeder Besucher, der ohne Kontaktaufnahme geht, ist ein verlorener Auftrag. Diese Probleme lösen wir konkret.</p>
+
+      <div class="mock-body" style="background: rgba(255,255,255,0.03); border-radius: 14px; padding: 20px; border: 1px solid rgba(255,255,255,0.07);">
+        <div class="mock-bar" style="border-radius: 8px 8px 0 0; margin: -20px -20px 16px;">
+          <div class="mock-dots">
+            <div class="mock-dot" style="background: #ef4444;"></div>
+            <div class="mock-dot" style="background: #f59e0b;"></div>
+            <div class="mock-dot" style="background: #22c55e;"></div>
+          </div>
+          <div class="mock-url">kraft-partner.com/services/</div>
+        </div>
+        <div class="mock-hero-old">
+          <div class="mock-title-old"># Services</div>
+          <div class="mock-text-lines">
+            <div class="mock-line" style="width:100%"></div>
+            <div class="mock-line" style="width:90%"></div>
+            <div class="mock-line" style="width:95%"></div>
+            <div class="mock-line" style="width:85%"></div>
+            <div class="mock-line" style="width:92%"></div>
+            <div class="mock-line" style="width:80%"></div>
+          </div>
+        </div>
+        <div class="mock-labels">
+          <div class="mock-label">Kein CTA-Button</div>
+          <div class="mock-label">Kein Formular</div>
+          <div class="mock-label">Kein Design</div>
+        </div>
+        <div class="mock-labels" style="margin-top: 8px;">
+          <div class="mock-label">Kein Social Proof</div>
+          <div class="mock-label">Kein SEO</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-cards">
+      <div class="problem-card">
+        <div class="problem-icon">🧱</div>
+        <div class="problem-text">
+          <h4>Veraltetes Design (2012-Stil)</h4>
+          <p>Der erste Eindruck entscheidet. Kein modernes Layout, keine Animationen, kein visuelles Vertrauen.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🔕</div>
+        <div class="problem-text">
+          <h4>Kein Call-to-Action</h4>
+          <p>Besucher lesen den Text – und gehen. Es gibt keine Schaltfläche, keine Einladung, nichts.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📵</div>
+        <div class="problem-text">
+          <h4>Kein Online-Formular</h4>
+          <p>Nur E-Mail und Telefon. Wer keine Zeit hat anzurufen, geht zum Wettbewerber.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🚫</div>
+        <div class="problem-text">
+          <h4>Kein Social Proof</h4>
+          <p>Keine Kundenbewertungen, keine Logos, keine Zahlen. Warum sollte jemand vertrauen?</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🔍</div>
+        <div class="problem-text">
+          <h4>Kein SEO / kein Blog</h4>
+          <p>Google findet die Website kaum. Kein organischer Traffic = keine kostenlosen Leads.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📱</div>
+        <div class="problem-text">
+          <h4>Schwache Mobile-Optimierung</h4>
+          <p>Über 60% der Besucher kommen per Smartphone. Die aktuelle Seite ist dafür nicht gemacht.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── COMPETITIVE ADVANTAGE ── -->
+<div class="advantage-section">
+  <div class="advantage-inner">
+
+    <div class="reveal" style="text-align: center; margin-bottom: 60px;">
+      <span class="section-tag" style="display: block; text-align: center;">Marktposition</span>
+      <div class="gold-divider" style="margin: 16px auto 24px;"></div>
+      <h2 class="section-title" style="text-align: center;">Was kein Mitbewerber<br>bieten kann</h2>
+      <p class="section-desc" style="margin: 16px auto 0; text-align: center;">10 führende IT-Beratungsunternehmen in Deutschland wurden analysiert. Keines kann diese Kombination vorweisen.</p>
+    </div>
+
+    <!-- Unique Positioning Banner -->
+    <div class="unique-banner reveal">
+      <div class="unique-icon">🏆</div>
+      <div class="unique-text">
+        <div class="unique-label">Einzigartiger Marktführer in Deutschland</div>
+        <div class="unique-title">Einziger IT-Berater mit vollständiger Expertise im gesamten Leasing-Software-Ökosystem — von NAVILEASE bis SAP ERP Leasing, alles aus einer Hand.</div>
+      </div>
+    </div>
+
+    <!-- Software Ecosystem Tags -->
+    <div class="software-grid reveal">
+      <span class="sw-tag">NAVILEASE</span>
+      <span class="sw-tag">LeasySOFT</span>
+      <span class="sw-tag">LeaseOS</span>
+      <span class="sw-tag">CALMS2</span>
+      <span class="sw-tag">OpenLease</span>
+      <span class="sw-tag">Alfa Systems</span>
+      <span class="sw-tag">comm.fleet</span>
+      <span class="sw-tag">comm.lease</span>
+      <span class="sw-tag">comm.object</span>
+      <span class="sw-tag">SAP ERP Leasing</span>
+      <span class="sw-tag">SAP CRM Leasing</span>
+      <span class="sw-tag">Oracle Financials</span>
+      <span class="sw-tag">TOP LEASE</span>
+      <span class="sw-tag">Leasman</span>
+      <span class="sw-tag">leas-connect</span>
+      <span class="sw-tag">SONEXLEASING</span>
+      <span class="sw-tag">Fleet+</span>
+      <span class="sw-tag">eGECKO</span>
+    </div>
+
+    <!-- Competitor Comparison Table -->
+    <div class="comp-table reveal">
+      <div class="comp-col comp-bad">
+        <div class="comp-header">🏢 Große Konzerne</div>
+        <div class="comp-subheader">BearingPoint · Wavestone · msg Group</div>
+        <div class="comp-items">
+          <div class="comp-item ci-bad">✗ Nur DAX-Unternehmen als Kunden</div>
+          <div class="comp-item ci-bad">✗ Keine Leasing-Spezialisierung</div>
+          <div class="comp-item ci-bad">✗ Zu teuer für den Mittelstand</div>
+          <div class="comp-item ci-bad">✗ Kein Leasing-Software-Know-how</div>
+        </div>
+      </div>
+      <div class="comp-col comp-bad">
+        <div class="comp-header">👤 Boutique-Firmen</div>
+        <div class="comp-subheader">ponturo · plenum · CAS AG</div>
+        <div class="comp-items">
+          <div class="comp-item ci-bad">✗ Nur Strategie — keine Umsetzung</div>
+          <div class="comp-item ci-bad">✗ Keine Datenmigrations-Erfahrung</div>
+          <div class="comp-item ci-bad">✗ Kein Leasing-Software-Stack</div>
+          <div class="comp-item ci-bad">✗ Keine Implementierungskompetenz</div>
+        </div>
+      </div>
+      <div class="comp-col comp-good">
+        <div class="comp-header">⭐ Kraft GmbH</div>
+        <div class="comp-subheader">27 Jahre Spezialist · München</div>
+        <div class="comp-items">
+          <div class="comp-item ci-good">✓ Leasing + Banken + Versicherung</div>
+          <div class="comp-item ci-good">✓ Strategie UND technische Umsetzung</div>
+          <div class="comp-item ci-good">✓ Mittelstand & Großunternehmen</div>
+          <div class="comp-item ci-good">✓ Vollständiger Leasing-Software-Stack</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Key Differentiators -->
+    <div class="diff-grid reveal">
+      <div class="diff-card">
+        <span class="diff-icon">🎯</span>
+        <div class="diff-title">Echte Unabhängigkeit</div>
+        <div class="diff-desc">Kraft arbeitet seit 1997 herstellerunabhängig. Kein Mitbewerber kann diesen Grundsatz glaubwürdig vertreten — Kraft lebt ihn seit fast 30 Jahren. Das ist auf der Website unsichtbar und muss endlich sichtbar werden.</div>
+      </div>
+      <div class="diff-card">
+        <span class="diff-icon">🏭</span>
+        <div class="diff-title">Mittelstand-Fokus</div>
+        <div class="diff-desc">Große Konzerne ignorieren mittelgroße Leasinggesellschaften. Kraft ist genau für dieses Segment spezialisiert — mit passenden Lösungen und fairen Konditionen.</div>
+      </div>
+      <div class="diff-card">
+        <span class="diff-icon">⚡</span>
+        <div class="diff-title">Strategie + Umsetzung</div>
+        <div class="diff-desc">Kein „Beratung ohne Hände". Kraft liefert von der Systemauswahl bis zur letzten Datenmigration alles aus einer Hand — termingerecht und präzise.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── PROPOSALS ── -->
+<div class="proposals-section" id="proposals">
+  <div class="proposals-inner">
+    <div class="reveal">
+      <span class="section-tag">Die 14 Lösungen</span>
+      <div class="gold-divider"></div>
+      <h2 class="section-title">Was wir konkret<br>umsetzen können</h2>
+      <p class="section-desc">Jede Maßnahme ist direkt umsetzbar, basiert auf einer Analyse von 10 Mitbewerbern und ist auf mehr Kundenanfragen ausgerichtet.</p>
+    </div>
+
+    <div class="proposals-grid">
+
+      <div class="proposal-card reveal" style="transition-delay: 0.05s">
+        <div class="card-num">01</div>
+        <span class="card-emoji">🚀</span>
+        <div class="card-title">Modernes Redesign der Website</div>
+        <div class="card-desc">Kompletter Neuaufbau der Services-Seite mit Hero-Bereich, Animationen, Symbolen und klaren Blöcken pro Leistung. Professioneller, zeitgemäßer Look im deutschen IT-Stil.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Erster Eindruck = mehr Vertrauen = mehr Anfragen</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-high">🔴 Hohe Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.1s">
+        <div class="card-num">02</div>
+        <span class="card-emoji">📋</span>
+        <div class="card-title">Interaktiver Kosten-Kalkulator</div>
+        <div class="card-desc">Ein 4–5-schrittiger Quiz: „Welches System nutzen Sie? Wie viele Datensätze? Brauchen Sie Migration?" → Am Ende sieht der Kunde den Richtpreis und hinterlässt seine E-Mail.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Automatische Leads 24/7 – ohne Telefon</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-high">🔴 Hohe Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.15s">
+        <div class="card-num">03</div>
+        <span class="card-emoji">📅</span>
+        <div class="card-title">Online-Terminbuchung</div>
+        <div class="card-desc">Eingebettetes Buchungs-Widget direkt auf der Website. Der Kunde wählt einen freien Termin – das Meeting erscheint sofort in beiden Kalendern. Kein E-Mail-Hin-und-Her mehr.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Konversion steigt um 30–50% gegenüber Telefonanfragen</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-high">🔴 Hohe Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.2s">
+        <div class="card-num">04</div>
+        <span class="card-emoji">📊</span>
+        <div class="card-title">Portfolio / Fallstudien-Bereich</div>
+        <div class="card-desc">Interaktive Projektkarten: Unternehmen → Problem → Lösung → Ergebnis (Zahlen). Filterbar nach Branchen: Leasing, Banken, Versicherung, Migration.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Kunden sehen echte Ergebnisse und entscheiden schneller</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-mid">🟠 Mittlere Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.25s">
+        <div class="card-num">05</div>
+        <span class="card-emoji">🤖</span>
+        <div class="card-title">KI-Chatbot auf der Website</div>
+        <div class="card-desc">Ein intelligenter Chatbot (auf Basis Claude AI), der Fragen zu Services beantwortet, die passende Lösung empfiehlt und Kontaktdaten sammelt – auf Deutsch, rund um die Uhr.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Kein Besucher geht ohne Antwort – auch nachts</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-mid">🟠 Mittlere Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.3s">
+        <div class="card-num">06</div>
+        <span class="card-emoji">📰</span>
+        <div class="card-title">SEO-Blog mit Fachartikeln</div>
+        <div class="card-desc">Regelmäßige Artikel: „SAP-Datenmigration leicht gemacht", „IFRS vs. HGB für Leasinggesellschaften" usw. Automatische Veröffentlichung über CMS, optimiert für Google.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Organischer Google-Traffic → kostenlose Neukunden monatlich</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-mid">🟠 Mittlere Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.35s">
+        <div class="card-num">07</div>
+        <span class="card-emoji">🌍</span>
+        <div class="card-title">Mehrsprachige Website (DE / EN)</div>
+        <div class="card-desc">Kraft GmbH betreut Kunden in ganz Europa. Eine englische Version der Website erschließt neue Märkte ohne zusätzliche Marketingkosten. Optional auch Russisch oder Französisch.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Internationales Wachstum ohne neue Vertriebskosten</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-low">🟢 Erweiterung</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.4s">
+        <div class="card-num">08</div>
+        <span class="card-emoji">📧</span>
+        <div class="card-title">E-Mail-Automatisierung & CRM</div>
+        <div class="card-desc">Nach jeder Anfrage startet automatisch eine E-Mail-Sequenz: „Danke für Ihre Anfrage" → „Unsere Fallstudien" → „Bereit für ein Gespräch?" Integration mit HubSpot oder Pipedrive.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Leads werden nicht „kalt" – Konversion steigt deutlich</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-mid">🟠 Mittlere Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.45s">
+        <div class="card-num">09</div>
+        <span class="card-emoji">⭐</span>
+        <div class="card-title">Vertrauen & Bewertungs-Sektion</div>
+        <div class="card-desc">Interaktiver Slider mit Kundenstimmen, Partner-Logos und Zahlen: „27 Jahre Erfahrung", Anzahl abgeschlossener Projekte, betreute Länder. Direkt auf der Startseite — sofort sichtbar für jeden neuen Besucher.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Sofortiges Vertrauen bei neuen Besuchern</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-high">🔴 Hohe Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.5s">
+        <div class="card-num">10</div>
+        <span class="card-emoji">📈</span>
+        <div class="card-title">Kunden-Portal mit Projekttracking</div>
+        <div class="card-desc">Ein geschlossener Bereich, in dem Kunden Projektstatus, Dokumente, Meilensteine und Kommunikation in Echtzeit verfolgen können. Kein Konkurrent in dieser Nische bietet das.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Riesiger Wettbewerbsvorteil & höhere Kundenzufriedenheit</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-low">🟢 Erweiterung</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.55s">
+        <div class="card-num">11</div>
+        <span class="card-emoji">🎯</span>
+        <div class="card-title">Klare Marktpositionierung „Nr. 1 im Leasing"</div>
+        <div class="card-desc">Eine dedizierte Seite positioniert Kraft GmbH als einzigen Spezialisten im gesamten deutschen Leasing-Software-Ökosystem: NAVILEASE, comm.lease, LeasySOFT, OpenLease und mehr — alles aus einer Hand. Kein Mitbewerber kann das behaupten.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Dauerhafter Wettbewerbsvorsprung — diese Position kann niemand kopieren</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-high">🔴 Hohe Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.6s">
+        <div class="card-num">12</div>
+        <span class="card-emoji">⚖️</span>
+        <div class="card-title">DORA / NIS2 Compliance-Landingpage</div>
+        <div class="card-desc">Der EU-Regulierungsrahmen DORA verpflichtet Finanzunternehmen zur IT-Modernisierung. Eine eigene Landingpage verbindet Kraft's Migrationsprojekte direkt mit diesem regulatorischen Pflichtprogramm — das Budget dafür ist bereits genehmigt.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Gespräch wechselt von „wollen wir?" zu „wann sind wir verpflichtet?" — fertige Leads</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-high">🔴 Hohe Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.65s">
+        <div class="card-num">13</div>
+        <span class="card-emoji">🏦</span>
+        <div class="card-title">Professioneller Pitch-Deck für Banken</div>
+        <div class="card-desc">Eine maßgeschneiderte digitale Präsentation für Bankgespräche und Investorenmeetings: klare Struktur, visuelle Daten, Projektergebnisse und Regulatorik-Argumente (DORA). Der erste Eindruck in der Bank entscheidet über den Auftrag.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Professionelles Auftreten vor Banken = höhere Abschlussquote & größere Aufträge</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-high">🔴 Hohe Priorität</span></div>
+      </div>
+
+      <div class="proposal-card reveal" style="transition-delay: 0.7s">
+        <div class="card-num">14</div>
+        <span class="card-emoji">🔎</span>
+        <div class="card-title">SEO für Nischen-Suchanfragen ohne Konkurrenz</div>
+        <div class="card-desc">Fachartikel für Suchanfragen mit nahezu null Konkurrenz: „NAVILEASE Migration Partner", „Datenmigration Leasinggesellschaft", „DORA Compliance Leasing IT". Genau diese Begriffe suchen qualifizierte Kunden — und niemand bedient sie.</div>
+        <div class="card-result">
+          <span class="card-result-icon">✦</span>
+          <span class="card-result-text">Google-Top-Platzierung ohne Werbebudget — monatlich neue qualifizierte Anfragen</span>
+        </div>
+        <div class="card-priority"><span class="priority-badge priority-mid">🟠 Mittlere Priorität</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── BEFORE / AFTER ── -->
+<div class="compare-section">
+  <div class="compare-inner">
+    <div class="reveal">
+      <span class="section-tag">Vorher vs. Nachher</span>
+      <div class="gold-divider"></div>
+      <h2 class="section-title">Was sich konkret ändert</h2>
+      <p class="section-desc">Ein direkter Vergleich zwischen dem aktuellen Stand und dem, was möglich ist.</p>
+    </div>
+
+    <div class="compare-grid reveal">
+      <div class="compare-box">
+        <div class="compare-header before">❌ Jetzt — kraft-partner.com</div>
+        <div class="compare-items">
+          <div class="compare-item"><span class="ci-icon">✗</span> Veraltetes Design, keine Struktur</div>
+          <div class="compare-item"><span class="ci-icon">✗</span> Nur Telefon & E-Mail — hohe Hürde</div>
+          <div class="compare-item"><span class="ci-icon">✗</span> Keine Projektbeispiele oder Kundenstimmen</div>
+          <div class="compare-item"><span class="ci-icon">✗</span> Kein SEO — Google findet die Seite kaum</div>
+          <div class="compare-item"><span class="ci-icon">✗</span> Nur auf Deutsch — keine internationalen Leads</div>
+          <div class="compare-item"><span class="ci-icon">✗</span> Keine automatische Lead-Verarbeitung</div>
+          <div class="compare-item"><span class="ci-icon">✗</span> Kein Chatbot — Fragen bleiben unbeantwortet</div>
+          <div class="compare-item"><span class="ci-icon">✗</span> Keine Terminbuchung — Telefonspiele</div>
+          <div class="compare-item"><span class="ci-icon">✗</span> Kein DORA-Argument — Regulatorik wird nicht genutzt</div>
+          <div class="compare-item"><span class="ci-icon">✗</span> Keine klare Marktposition gegenüber Mitbewerbern</div>
+        </div>
+      </div>
+
+      <div class="compare-box">
+        <div class="compare-header after">✅ Nach der Modernisierung</div>
+        <div class="compare-items">
+          <div class="compare-item"><span class="ci-icon">✓</span> Modernes, vertrauenswürdiges Design</div>
+          <div class="compare-item"><span class="ci-icon">✓</span> Online-Formular & Terminbuchung in 2 Klicks</div>
+          <div class="compare-item"><span class="ci-icon">✓</span> Portfolio mit echten Projektergebnissen</div>
+          <div class="compare-item"><span class="ci-icon">✓</span> SEO-Blog bringt monatlich neue Besucher</div>
+          <div class="compare-item"><span class="ci-icon">✓</span> DE + EN — europäische Kunden werden gefunden</div>
+          <div class="compare-item"><span class="ci-icon">✓</span> CRM-Integration: kein Lead geht verloren</div>
+          <div class="compare-item"><span class="ci-icon">✓</span> KI-Chatbot beantwortet Fragen rund um die Uhr</div>
+          <div class="compare-item"><span class="ci-icon">✓</span> Terminkalender direkt auf der Website</div>
+          <div class="compare-item"><span class="ci-icon">✓</span> DORA-Landingpage: Kunden kommen mit fertigem Budget</div>
+          <div class="compare-item"><span class="ci-icon">✓</span> Klare „Nr. 1 im Leasing"-Position — unschlagbar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROCESS ── -->
+<div class="process-section">
+  <div class="reveal">
+    <span class="section-tag">Wie wir arbeiten</span>
+    <div class="gold-divider"></div>
+    <h2 class="section-title">In 4 Schritten zum Ergebnis</h2>
+    <p class="section-desc">Strukturiert, transparent und termintreu — wie Sie es von einem professionellen Partner erwarten.</p>
+  </div>
+
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <div class="step-circle">1</div>
+      <div class="step-title">Analyse</div>
+      <div class="step-desc">Tiefgehende Analyse Ihrer aktuellen Website, Zielgruppe und Wettbewerb</div>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">2</div>
+      <div class="step-title">Konzept</div>
+      <div class="step-desc">Maßgeschneidertes Konzept mit Design-Mockups und klarem Umsetzungsplan</div>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">3</div>
+      <div class="step-title">Umsetzung</div>
+      <div class="step-desc">Agile Entwicklung mit regelmäßigen Updates und Abstimmungen</div>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">4</div>
+      <div class="step-title">Launch & SEO</div>
+      <div class="step-desc">Live-Schaltung, Google-Indexierung und kontinuierliche Optimierung</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── QUICK START ── -->
+<div class="quickstart-section">
+  <div class="quickstart-inner reveal">
+    <span class="section-tag" style="display:block;text-align:center;">Wo anfangen?</span>
+    <div class="gold-divider" style="margin:16px auto 24px;"></div>
+    <h2 class="section-title" style="text-align:center;">In 3 Wochen zum ersten Ergebnis</h2>
+    <p class="section-desc" style="text-align:center;margin:0 auto 48px;">Nicht alle 14 Maßnahmen auf einmal. Wir empfehlen einen strukturierten Einstieg in drei Paketen.</p>
+
+    <div class="qs-grid">
+      <div class="qs-card">
+        <div class="qs-label">Woche 1–2</div>
+        <div class="qs-title">🚀 Quick Win</div>
+        <div class="qs-items">
+          <div class="qs-item">✓ Modernes Redesign der Startseite</div>
+          <div class="qs-item">✓ Online-Terminbuchung</div>
+          <div class="qs-item">✓ Vertrauen & Bewertungs-Sektion</div>
+        </div>
+        <div class="qs-result">Sofortige Wirkung — erste neue Anfragen innerhalb von Tagen</div>
+      </div>
+      <div class="qs-card qs-featured">
+        <div class="qs-badge">Empfohlen</div>
+        <div class="qs-label">Monat 1–2</div>
+        <div class="qs-title">⚡ Wachstums-Paket</div>
+        <div class="qs-items">
+          <div class="qs-item">✓ Alles aus Quick Win</div>
+          <div class="qs-item">✓ Interaktiver Kosten-Kalkulator</div>
+          <div class="qs-item">✓ KI-Chatbot (Claude AI)</div>
+          <div class="qs-item">✓ DORA Compliance-Landingpage</div>
+          <div class="qs-item">✓ Pitch-Deck für Bankgespräche</div>
+        </div>
+        <div class="qs-result">Vollständige Lead-Maschine — 24/7 aktiv</div>
+      </div>
+      <div class="qs-card">
+        <div class="qs-label">Monat 3–6</div>
+        <div class="qs-title">🏆 Marktführer-Paket</div>
+        <div class="qs-items">
+          <div class="qs-item">✓ Alles aus Wachstums-Paket</div>
+          <div class="qs-item">✓ SEO-Blog + Nischen-Keywords</div>
+          <div class="qs-item">✓ Kunden-Portal mit Projekttracking</div>
+          <div class="qs-item">✓ DE/EN mehrsprachige Website</div>
+          <div class="qs-item">✓ CRM & E-Mail-Automatisierung</div>
+        </div>
+        <div class="qs-result">Unangreifbare Marktposition — kein Mitbewerber kann mithalten</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CTA ── -->
+<div class="cta-section">
+  <div class="cta-box reveal">
+    <h2>Bereit für mehr<br><span style="color: var(--gold)">Kunden & Aufträge?</span></h2>
+    <p>Lassen Sie uns in einem kostenlosen 30-Minuten-Gespräch besprechen, welche dieser 14 Maßnahmen den größten Impact für Kraft GmbH haben.</p>
+    <div class="cta-buttons">
+      <a href="mailto:hallo@touchdigital.de" class="btn-primary">✦ Kostenloses Gespräch buchen</a>
+      <a href="#proposals" class="btn-secondary">Alle Lösungen ansehen →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  Analyse erstellt für <span>kraft-partner.com</span> · Kraft GmbH München · <span>2026</span>
+  <br style="margin-bottom: 8px;">
+  <span style="color: rgba(255,255,255,0.25); font-size: 12px;">Präsentiert von <span style="color: var(--gold);">Touch Digital · touchdigital.de</span> · hallo@touchdigital.de</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Counter animation for hero stats
+  function animateCounter(el, target, suffix = '') {
+    let start = 0;
+    const duration = 1500;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) {
+        el.textContent = target + suffix;
+        clearInterval(timer);
+      } else {
+        el.textContent = Math.floor(start) + suffix;
+      }
+    }, 16);
+  }
+
+  // Trigger counters when hero is visible
+  const statNums = document.querySelectorAll('.stat-num');
+  let countersStarted = false;
+  const heroObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !countersStarted) {
+      countersStarted = true;
+      const targets = [{ el: statNums[0], val: 14, suffix: '' }, { el: statNums[2], val: 27, suffix: 'J.' }];
+      targets.forEach(t => animateCounter(t.el, t.val, t.suffix));
+    }
+  }, { threshold: 0.5 });
+  if (statNums[0]) heroObserver.observe(statNums[0].closest('.hero-stats'));
+</script>
+
+</body>
+</html>
