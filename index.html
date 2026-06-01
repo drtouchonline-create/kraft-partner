@@ -1155,11 +1155,22 @@
     flex-wrap: wrap;
   }
 
-  .logo-ph {
-    height: 28px;
-    border-radius: 5px;
-    background: rgba(255,255,255,0.08);
-    opacity: 0.6;
+  .logo-pill {
+    padding: 8px 18px;
+    border-radius: 100px;
+    border: 1px solid rgba(201,168,76,0.25);
+    background: rgba(201,168,76,0.06);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.55);
+    white-space: nowrap;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .logo-pill:hover {
+    border-color: rgba(201,168,76,0.55);
+    color: var(--gold);
+    background: rgba(201,168,76,0.10);
   }
 
   /* ── TEAM SECTION ── */
@@ -1679,13 +1690,13 @@
 <div class="logos-section">
   <p class="logos-label">Bekannte Systeme · Vertraute Partner</p>
   <div class="logos-track">
-    <div class="logo-ph" style="width:90px;"></div>
-    <div class="logo-ph" style="width:120px;"></div>
-    <div class="logo-ph" style="width:80px;"></div>
-    <div class="logo-ph" style="width:110px;"></div>
-    <div class="logo-ph" style="width:95px;"></div>
-    <div class="logo-ph" style="width:100px;"></div>
-    <div class="logo-ph" style="width:85px;"></div>
+    <span class="logo-pill">NAVILEASE</span>
+    <span class="logo-pill">LeasySOFT</span>
+    <span class="logo-pill">CALMS2</span>
+    <span class="logo-pill">OpenLease</span>
+    <span class="logo-pill">comm.fleet</span>
+    <span class="logo-pill">comm.lease</span>
+    <span class="logo-pill">SAP ERP Leasing</span>
   </div>
 </div>
 
